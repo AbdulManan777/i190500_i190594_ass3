@@ -89,7 +89,7 @@
                 >
                 <EditText
 
-                    android:id="@+id/username_signup"
+                    android:id="@+id/username_signin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <EditText
-                        android:id="@+id/password_signup"
+                        android:id="@+id/password_signin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ems="10"

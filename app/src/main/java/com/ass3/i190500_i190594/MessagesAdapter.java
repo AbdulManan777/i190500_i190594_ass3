@@ -12,6 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyViewHolder> {
@@ -37,6 +41,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
 
 
+        holder.time1.setText(ls.get(position).getTime1());
+
+
+
+
     }
 
 
@@ -46,12 +55,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView message;
+        TextView message,time1;
         LinearLayout row;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             row=itemView.findViewById(R.id.message_row);
             message=itemView.findViewById(R.id.messageText);
+            time1=itemView.findViewById(R.id.time1);
             //phno=itemView.findViewById(R.id.phno);
             //address=itemView.findViewById(R.id.address);
         }

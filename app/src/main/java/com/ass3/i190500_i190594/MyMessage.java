@@ -3,14 +3,20 @@ package com.ass3.i190500_i190594;
 public class MyMessage {
 
     String Message, SenderName, ReceiverName;
+    String time1;
 
-    public MyMessage(String message){
+    public MyMessage(String message,String time1){
 
         this.Message=message;
+        this.time1=time1;
     }
 
     public String getMessage() {
         return Message;
+    }
+    public String getTime1(){
+
+        return time1;
     }
 
     public void setMessage(String message) {

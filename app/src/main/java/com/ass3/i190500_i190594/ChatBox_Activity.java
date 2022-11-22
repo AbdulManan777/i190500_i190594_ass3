@@ -25,7 +25,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +69,8 @@ public class ChatBox_Activity extends AppCompatActivity {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DateFormat df = new SimpleDateFormat("HH:mm aaa"); // Format time
+                String time2 = df.format(Calendar.getInstance().getTime());
 
                 StringRequest request=new StringRequest(
                         Request.Method.POST,
@@ -93,7 +97,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
                                     Toast.makeText(
                                             ChatBox_Activity.this,
-                                            "Incorrect JSON"
+                                            response
                                             ,Toast.LENGTH_LONG
                                     ).show();
                                 }
@@ -115,11 +119,11 @@ public class ChatBox_Activity extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params=new HashMap<>();
-                        Log.i("Message",messageEdit.getText().toString());
-                        Log.i("SenderName", senderName);
+
                         params.put("Message",messageEdit.getText().toString());
                         params.put("SenderName",senderName);
                         params.put("RecieverName",un);
+                        params.put("CurrTime",time2);
                         // params.put("PhoneNum",phonenum.getText().toString());
 
                         return params;
@@ -167,7 +171,7 @@ public class ChatBox_Activity extends AppCompatActivity {
                                 {
 
                                     JSONObject contact=contacts.getJSONObject(i);
-                                    ls.add(new MyMessage(contact.getString("Message")));
+                                    ls.add(new MyMessage(contact.getString("Message"),contact.getString("CurrTime")));
                                     adapter.notifyDataSetChanged();
                                 }
 

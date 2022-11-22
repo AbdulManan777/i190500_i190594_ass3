@@ -9,11 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:textSize="30sp"
         android:background="@color/teal_200"
         android:id="@+id/messageText"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:background="#000"
         />
 

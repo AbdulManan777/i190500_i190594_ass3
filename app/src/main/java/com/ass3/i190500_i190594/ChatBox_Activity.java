@@ -58,8 +58,8 @@ public class ChatBox_Activity extends AppCompatActivity {
         rv.setLayoutManager(lm);
 
 
-         un=getIntent().getStringExtra("Username");
-         senderName=getIntent().getStringExtra("SenderName");
+        un=getIntent().getStringExtra("Username");
+        senderName=getIntent().getStringExtra("SenderName");
 
         Username.setText(un);
 
@@ -87,6 +87,7 @@ public class ChatBox_Activity extends AppCompatActivity {
                                                 ,Toast.LENGTH_LONG
                                         ).show();
                                     }
+                                    messageEdit.setText("");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
 
@@ -151,7 +152,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.9/smdass3/getMessage.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.9/smdass3/getMessageSenderRecv.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -1,6 +1,7 @@
 package com.ass3.i190500_i190594;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -43,6 +44,16 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
 
         holder.time1.setText(ls.get(position).getTime1());
+
+        holder.row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                CustomDialog cdd=new CustomDialog((Activity) c,holder.message.getText().toString());
+                cdd.show();
+
+            }
+        });
 
 
 

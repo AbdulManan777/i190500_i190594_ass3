@@ -73,70 +73,76 @@ public class ChatBox_Activity extends AppCompatActivity {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DateFormat df = new SimpleDateFormat("HH:mm aaa"); // Format time
-                String time2 = df.format(Calendar.getInstance().getTime());
 
-                StringRequest request=new StringRequest(
-                        Request.Method.POST,
-                        "http://192.168.10.5/smdass3/Message.php",
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject obj=new JSONObject(response);
-                                    if(obj.getInt("code")==1)
-                                    {
-                                        Toast.makeText(getApplicationContext(),"Message Successfully Sent",Toast.LENGTH_LONG).show();
-                                    }
-                                    else{
+                if(!messageEdit.getText().toString().equals("")) {
+                    DateFormat df = new SimpleDateFormat("HH:mm aaa"); // Format time
+                    String time2 = df.format(Calendar.getInstance().getTime());
+
+                    StringRequest request = new StringRequest(
+                            Request.Method.POST,
+                            "http://192.168.10.5/smdass3/Message.php",
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        JSONObject obj = new JSONObject(response);
+                                        if (obj.getInt("code") == 1) {
+                                            Toast.makeText(getApplicationContext(), "Message Successfully Sent", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(
+                                                    ChatBox_Activity.this,
+                                                    obj.get("msg").toString()
+                                                    , Toast.LENGTH_LONG
+                                            ).show();
+                                        }
+                                        messageEdit.setText("");
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+
                                         Toast.makeText(
                                                 ChatBox_Activity.this,
-                                                obj.get("msg").toString()
-                                                ,Toast.LENGTH_LONG
+                                                response
+                                                , Toast.LENGTH_LONG
                                         ).show();
                                     }
-                                    messageEdit.setText("");
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
                                     Toast.makeText(
                                             ChatBox_Activity.this,
-                                            response
-                                            ,Toast.LENGTH_LONG
+                                            error.toString().trim()
+                                            , Toast.LENGTH_LONG
                                     ).show();
                                 }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(
-                                        ChatBox_Activity.this,
-                                        error.toString().trim()
-                                        , Toast.LENGTH_LONG
-                                ).show();
-                            }
-                        })
-                {
+                            }) {
 
-                    @Nullable
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params=new HashMap<>();
+                        @Nullable
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
 
-                        params.put("Message",messageEdit.getText().toString());
-                        params.put("SenderName",senderName);
-                        params.put("RecieverName",un);
-                        params.put("CurrTime",time2);
-                        // params.put("PhoneNum",phonenum.getText().toString());
+                            params.put("Message", messageEdit.getText().toString());
+                            params.put("SenderName", senderName);
+                            params.put("RecieverName", un);
+                            params.put("CurrTime", time2);
+                            // params.put("PhoneNum",phonenum.getText().toString());
 
-                        return params;
-                    }
-                };
+                            return params;
+                        }
+                    };
 
 
-                RequestQueue queue= Volley.newRequestQueue(ChatBox_Activity.this);
-                queue.add(request);
+                    RequestQueue queue = Volley.newRequestQueue(ChatBox_Activity.this);
+                    queue.add(request);
+
+                }
+
+                else{
+
+                    Toast.makeText(getApplicationContext(),"Please enter the message first to send",Toast.LENGTH_LONG).show();
+                }
 
 
 

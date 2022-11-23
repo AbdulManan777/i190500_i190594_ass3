@@ -27,7 +27,7 @@ public class SignIn_Activity extends AppCompatActivity {
     EditText username,password;
     Button signin;
     TextView signup;
-
+    TextView forgetPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +35,18 @@ public class SignIn_Activity extends AppCompatActivity {
 
         username=findViewById(R.id.username_signin);
         password=findViewById(R.id.password_signin);
+        forgetPass=findViewById(R.id.forget_password);
 
         signin=findViewById(R.id.sign_in);
         signup=findViewById(R.id.sign_up_BT);
+
+        forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignIn_Activity.this,ForgetPasswordActivity.class));
+            }
+        });
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

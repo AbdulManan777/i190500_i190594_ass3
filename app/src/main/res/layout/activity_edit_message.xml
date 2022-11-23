@@ -20,15 +20,7 @@
             android:layout_centerVertical="true"
             />
 
-        <TextView
-            android:id="@+id/user_Name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="UserName"
-            android:textColor="@color/corn"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
 
 
     </RelativeLayout>

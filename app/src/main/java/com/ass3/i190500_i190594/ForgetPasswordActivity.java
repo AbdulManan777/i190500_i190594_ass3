@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,35 +24,34 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditMessageActivity extends AppCompatActivity {
+public class ForgetPasswordActivity extends AppCompatActivity {
 
-    //TextView Username;
-    EditText messageEdit;
-    ImageView sendMessage;
-    String message;
-//    String sendername;
+    EditText username, phone;
+    Button getpass;
+    TextView restorepass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_message);
+        setContentView(R.layout.activity_forget_password);
 
-       // Username=findViewById(R.id.user_Name1);
-        messageEdit=findViewById(R.id.msg1);
+        username=findViewById(R.id.usernameforgot);
 
-        sendMessage=findViewById(R.id.submit_msg1);
-        message=getIntent().getStringExtra("message");
+        phone=findViewById(R.id.phonenum);
 
+        getpass=findViewById(R.id.getPass);
+        restorepass=findViewById(R.id.restoredpass);
 
-        sendMessage.setOnClickListener(new View.OnClickListener() {
+        getpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!messageEdit.getText().toString().equals("")){
+
+                if(!username.getText().toString().equals("") && !phone.getText().toString().equals("")){
 
 
                     StringRequest request=new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.5/smdass3/edit.php",
+                            "http://192.168.10.5/smdass3/password.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -60,22 +59,24 @@ public class EditMessageActivity extends AppCompatActivity {
                                         JSONObject obj=new JSONObject(response);
                                         if(obj.getInt("code")==1)
                                         {
-                                            Toast.makeText(getApplicationContext(),"Message Updated Successfully",Toast.LENGTH_LONG).show();
-                                            finish();
+                                            restorepass.setText("Your Password is: "+response);
+                                            restorepass.setVisibility(View.VISIBLE);
+                                            Toast.makeText(getApplicationContext(),"Your Password is: "+response,Toast.LENGTH_LONG).show();
+                                           // finish();
                                         }
                                         else{
                                             Toast.makeText(
-                                                    EditMessageActivity.this,
+                                                    ForgetPasswordActivity.this,
                                                     obj.get("msg").toString()
                                                     ,Toast.LENGTH_LONG
                                             ).show();
                                         }
-                                        messageEdit.setText("");
+
                                     } catch (JSONException e) {
                                         e.printStackTrace();
 
                                         Toast.makeText(
-                                                EditMessageActivity.this,
+                                                ForgetPasswordActivity.this,
                                                 response
                                                 ,Toast.LENGTH_LONG
                                         ).show();
@@ -86,7 +87,7 @@ public class EditMessageActivity extends AppCompatActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     Toast.makeText(
-                                            EditMessageActivity.this,
+                                            ForgetPasswordActivity.this,
                                             error.toString().trim()
                                             , Toast.LENGTH_LONG
                                     ).show();
@@ -99,8 +100,8 @@ public class EditMessageActivity extends AppCompatActivity {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params=new HashMap<>();
 
-                            params.put("Message",message);
-                            params.put("Message2",messageEdit.getText().toString());
+                            params.put("Username",username.getText().toString());
+                            params.put("PhoneNum",phone.getText().toString());
                             //params.put("RecieverName",un);
                             //params.put("CurrTime",time2);
                             // params.put("PhoneNum",phonenum.getText().toString());
@@ -110,7 +111,7 @@ public class EditMessageActivity extends AppCompatActivity {
                     };
 
 
-                    RequestQueue queue= Volley.newRequestQueue(EditMessageActivity.this);
+                    RequestQueue queue= Volley.newRequestQueue(ForgetPasswordActivity.this);
                     queue.add(request);
 
 
@@ -122,11 +123,12 @@ public class EditMessageActivity extends AppCompatActivity {
                 }
 
                 else{
-
-                    Toast.makeText(getApplicationContext(),"Please first enter the updated message",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Please first complete the fields",Toast.LENGTH_LONG).show();
                 }
+
             }
         });
-    }
 
+
+    }
 }

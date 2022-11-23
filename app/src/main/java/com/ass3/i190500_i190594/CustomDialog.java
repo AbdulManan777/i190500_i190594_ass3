@@ -68,7 +68,7 @@ public class CustomDialog extends Dialog implements
 
                 StringRequest request=new StringRequest(
                         Request.Method.POST,
-                        "http://192.168.10.5/smdass3/deletemessage.php",
+                        "http://"+IPServer.getIP_server()+"/smdass3/deletemessage.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

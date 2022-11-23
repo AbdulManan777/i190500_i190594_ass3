@@ -62,7 +62,7 @@ public class Contacts_Activity extends AppCompatActivity {
 
 
         //Getting Current User Dp
-        StringRequest request2=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getImageOnly.php",
+        StringRequest request2=new StringRequest(Request.Method.POST, "http://"+IPServer.getIP_server()+"/smdass3/getImageOnly.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -79,7 +79,7 @@ public class Contacts_Activity extends AppCompatActivity {
                                     JSONObject contact=contacts.getJSONObject(i);
                                     //String usern=contact.getString("Username");
                                     String image=contact.getString("image");
-                                     url2="http://192.168.10.5/smdass3/images/"+image;
+                                     url2="http://"+IPServer.getIP_server()+"/smdass3/images/"+image;
 
                                     //MyContact m=new MyContact(usern,url);
                                     //ls.add(m);
@@ -141,7 +141,7 @@ public class Contacts_Activity extends AppCompatActivity {
 
 
         //Getting COntacts with thier Profile pics
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getUserImg.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://"+IPServer.getIP_server()+"/smdass3/getUserImg.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -158,7 +158,7 @@ public class Contacts_Activity extends AppCompatActivity {
                                     JSONObject contact=contacts.getJSONObject(i);
                                     String usern=contact.getString("Username");
                                     String image=contact.getString("image");
-                                    String url="http://192.168.10.5/smdass3/images/"+image;
+                                    String url="http://"+IPServer.getIP_server()+"/smdass3/images/"+image;
 
                                     MyContact m=new MyContact(usern,url);
                                     ls.add(m);
@@ -203,4 +203,6 @@ public class Contacts_Activity extends AppCompatActivity {
         RequestQueue queue= Volley.newRequestQueue(Contacts_Activity.this);
         queue.add(request);
     }
+
+
 }

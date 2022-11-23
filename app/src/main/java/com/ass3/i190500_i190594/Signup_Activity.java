@@ -56,7 +56,7 @@ public class Signup_Activity extends AppCompatActivity {
                 if(!username.getText().toString().equals("")&& !password.getText().toString().equals("") && !phonenum.getText().toString().equals("")){
                     StringRequest request=new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.5/smdass3/insert.php",
+                            "http://"+IPServer.getIP_server()+"/smdass3/insert.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

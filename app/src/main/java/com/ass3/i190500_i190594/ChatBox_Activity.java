@@ -80,7 +80,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
                     StringRequest request = new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.5/smdass3/Message.php",
+                            "http://"+IPServer.getIP_server()+"/smdass3/Message.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -166,7 +166,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getMessageSenderRecv.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://"+IPServer.getIP_server()+"/smdass3/getMessageSenderRecv.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

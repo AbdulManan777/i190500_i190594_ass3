@@ -51,7 +51,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
                     StringRequest request=new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.5/smdass3/password.php",
+                            "http://"+IPServer.getIP_server()+"/smdass3/password.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

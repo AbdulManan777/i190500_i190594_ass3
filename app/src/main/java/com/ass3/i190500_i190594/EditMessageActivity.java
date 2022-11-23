@@ -52,7 +52,7 @@ public class EditMessageActivity extends AppCompatActivity {
 
                     StringRequest request=new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.5/smdass3/edit.php",
+                            "http://"+IPServer.getIP_server()+"/smdass3/edit.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

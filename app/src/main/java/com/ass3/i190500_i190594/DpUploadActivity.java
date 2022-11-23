@@ -41,7 +41,7 @@ public class DpUploadActivity extends AppCompatActivity {
     Button upload;
     Bitmap bitmap;
     String encodeImageString;
-    String Username;
+    String Username, Password;
 
     byte[] bytearray;
     @Override
@@ -52,6 +52,7 @@ public class DpUploadActivity extends AppCompatActivity {
         dp=findViewById(R.id.dp);
         upload=findViewById(R.id.dpchat);
         Username=getIntent().getStringExtra("Username");
+        Password=getIntent().getStringExtra("Password");
         Log.i(
                 "Username is",Username
         );
@@ -147,6 +148,10 @@ public class DpUploadActivity extends AppCompatActivity {
                 dp.setImageResource(R.drawable.dp_upload);
                 bytearray=null;
                 Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                Intent i=new Intent(DpUploadActivity.this,Contacts_Activity.class);
+                i.putExtra("Username",Username);
+                i.putExtra("Password",Password);
+                startActivity(i);
                 Log.i("Response:", response);
 
             }

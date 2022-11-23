@@ -67,6 +67,7 @@ public class Signup_Activity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(),"User added Successfully",Toast.LENGTH_LONG).show();
                                             Intent i = new Intent(Signup_Activity.this, DpUploadActivity.class);
                                             i.putExtra("Username",username.getText().toString());
+                                            i.putExtra("Password",password.getText().toString());
                                            // i.putExtra("Password",password.getText().toString());
                                             startActivity(i);
                                             //startActivity(new Intent(Signup_Activity.this,DpUploadActivity.class));

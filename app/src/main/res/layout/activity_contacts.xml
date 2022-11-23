@@ -34,7 +34,7 @@
                     android:textSize="20sp"
                     android:textColor="#ffff"
                     />
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profielpicture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

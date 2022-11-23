@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -35,6 +38,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
+
+        Glide.with(c).load(ls.get(position).getDp()).into(holder.dpImg);
         holder.name.setText(ls.get(position).getUsername());
       //  holder.phno.setText(ls.get(position).getPhno());
        // holder.address.setText(ls.get(position).getAddress());
@@ -68,10 +73,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,pass,phone;
         LinearLayout row;
+        ImageView dpImg;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             row=itemView.findViewById(R.id.roww);
             name=itemView.findViewById(R.id.username);
+            dpImg=itemView.findViewById(R.id.dpImg);
             //phno=itemView.findViewById(R.id.phno);
             //address=itemView.findViewById(R.id.address);
         }

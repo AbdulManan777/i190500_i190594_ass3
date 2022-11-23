@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,11 +58,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView message,time1;
         LinearLayout row;
+       // ImageView dpImg;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             row=itemView.findViewById(R.id.message_row);
             message=itemView.findViewById(R.id.messageText);
             time1=itemView.findViewById(R.id.time1);
+
             //phno=itemView.findViewById(R.id.phno);
             //address=itemView.findViewById(R.id.address);
         }

@@ -64,6 +64,10 @@ public class ChatBox_Activity extends AppCompatActivity {
         un=getIntent().getStringExtra("Username");
         senderName=getIntent().getStringExtra("SenderName");
 
+
+
+
+
         Username.setText(un);
 
         sendMessage.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +78,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
                 StringRequest request=new StringRequest(
                         Request.Method.POST,
-                        "http://192.168.10.9/smdass3/Message.php",
+                        "http://192.168.10.5/smdass3/Message.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -156,7 +160,7 @@ public class ChatBox_Activity extends AppCompatActivity {
 
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.9/smdass3/getMessageSenderRecv.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getMessageSenderRecv.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -171,7 +175,8 @@ public class ChatBox_Activity extends AppCompatActivity {
                                 {
 
                                     JSONObject contact=contacts.getJSONObject(i);
-                                    ls.add(new MyMessage(contact.getString("Message"),contact.getString("CurrTime")));
+                                    ls.add(new MyMessage(contact.getString("Message"),contact.getString("CurrTime"),senderName));
+
                                     adapter.notifyDataSetChanged();
                                 }
 
@@ -180,7 +185,7 @@ public class ChatBox_Activity extends AppCompatActivity {
                                 Toast.makeText(ChatBox_Activity.this,obj.get("msg").toString(),Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(ChatBox_Activity.this,response,Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChatBox_Activity.this,"No Messages to Load",Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
                     }

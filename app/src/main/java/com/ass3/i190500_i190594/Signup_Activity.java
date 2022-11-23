@@ -56,7 +56,7 @@ public class Signup_Activity extends AppCompatActivity {
                 if(!username.getText().toString().equals("")&& !password.getText().toString().equals("") && !phonenum.getText().toString().equals("")){
                     StringRequest request=new StringRequest(
                             Request.Method.POST,
-                            "http://192.168.10.9/smdass3/insert.php",
+                            "http://192.168.10.5/smdass3/insert.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -64,7 +64,13 @@ public class Signup_Activity extends AppCompatActivity {
                                         JSONObject obj=new JSONObject(response);
                                         if(obj.getInt("code")==1)
                                         {
-                                            finish();
+                                            Toast.makeText(getApplicationContext(),"User added Successfully",Toast.LENGTH_LONG).show();
+                                            Intent i = new Intent(Signup_Activity.this, DpUploadActivity.class);
+                                            i.putExtra("Username",username.getText().toString());
+                                           // i.putExtra("Password",password.getText().toString());
+                                            startActivity(i);
+                                            //startActivity(new Intent(Signup_Activity.this,DpUploadActivity.class));
+                                            //finish();
                                         }
                                         else{
                                             Toast.makeText(

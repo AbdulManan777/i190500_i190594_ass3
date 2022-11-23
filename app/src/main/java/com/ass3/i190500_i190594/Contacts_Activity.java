@@ -60,7 +60,7 @@ public class Contacts_Activity extends AppCompatActivity {
 
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.9/smdass3/get.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getUserImg.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -69,13 +69,18 @@ public class Contacts_Activity extends AppCompatActivity {
 
                             if(obj.getInt("code")==1)
                             {
-                                JSONArray contacts=obj.getJSONArray("users");
+                                JSONArray contacts=obj.getJSONArray("pictures");
 
                                 for (int i=0; i<contacts.length();i++)
                                 {
 
                                     JSONObject contact=contacts.getJSONObject(i);
-                                    ls.add(new MyContact(contact.getString("Username")));
+                                    String usern=contact.getString("Username");
+                                    String image=contact.getString("image");
+                                    String url="http://192.168.10.5/smdass3/images/"+image;
+
+                                    MyContact m=new MyContact(usern,url);
+                                    ls.add(m);
                                     adapter.notifyDataSetChanged();
                                 }
 

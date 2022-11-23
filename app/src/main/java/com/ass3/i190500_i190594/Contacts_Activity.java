@@ -60,7 +60,7 @@ public class Contacts_Activity extends AppCompatActivity {
 
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/getUserImg.php",
+        StringRequest request=new StringRequest(Request.Method.POST, "http://"+IP_server.getIP_server()+"/smdass3/getUserImg.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -77,7 +77,7 @@ public class Contacts_Activity extends AppCompatActivity {
                                     JSONObject contact=contacts.getJSONObject(i);
                                     String usern=contact.getString("Username");
                                     String image=contact.getString("image");
-                                    String url="http://192.168.10.5/smdass3/images/"+image;
+                                    String url="http://"+IP_server.getIP_server()+"/smdass3/images/"+image;
 
                                     MyContact m=new MyContact(usern,url);
                                     ls.add(m);

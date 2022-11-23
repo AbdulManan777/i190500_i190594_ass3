@@ -139,7 +139,7 @@ public class DpUploadActivity extends AppCompatActivity {
     public void uploaddatatodb(){
 
 
-        StringRequest request=new StringRequest(Request.Method.POST, "http://192.168.10.5/smdass3/dp.php", new Response.Listener<String>() {
+        StringRequest request=new StringRequest(Request.Method.POST, "http://"+IP_server.getIP_server()+"/smdass3/dp.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {

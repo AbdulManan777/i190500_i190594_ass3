@@ -88,6 +88,7 @@
                 android:layout_marginLeft="20dp"
                 />
             <ImageView
+                android:id="@+id/logoutimg"
                 android:layout_marginLeft="30dp"
                 android:layout_toRightOf="@+id/log_out"
                 android:layout_centerVertical="true"

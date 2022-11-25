@@ -53,6 +53,8 @@ public class Contacts_Activity extends AppCompatActivity {
     DrawerLayout dwr;
     TextView username4,password4,phone4;
     String phone;
+    TextView logout;
+    ImageView logoutimg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,8 @@ public class Contacts_Activity extends AppCompatActivity {
         userImg=findViewById(R.id.dpImg3);
         profile_dp=findViewById(R.id.profile_dp);
         username4=findViewById(R.id.user_name4);
+        logout=findViewById(R.id.log_out);
+        logoutimg=findViewById(R.id.logoutimg);
 
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +83,19 @@ public class Contacts_Activity extends AppCompatActivity {
                     dwr.closeDrawer(Gravity.LEFT);
                 else
                     dwr.openDrawer(Gravity.LEFT);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        logoutimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

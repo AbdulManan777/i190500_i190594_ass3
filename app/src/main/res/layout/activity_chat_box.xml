@@ -30,6 +30,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/ss"
             android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show"
+            android:text="IMG"
             android:textColor="@color/corn"
             android:textSize="20dp"
             />
@@ -99,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/add_white"
+            android:src="@drawable/submit_button"
             android:visibility="gone"
             />
 

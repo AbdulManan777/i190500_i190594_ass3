@@ -471,7 +471,10 @@ public class ChatBox_Activity extends AppCompatActivity {
                 //i.putExtra("Username",Username);
                 //i.putExtra("Password",Password);
                 //startActivity(i);
+
                 Log.i("Response:", response);
+                imgmessage.setVisibility(View.GONE);
+                sendMessage.setVisibility(View.VISIBLE);
 
             }
         }, new Response.ErrorListener() {

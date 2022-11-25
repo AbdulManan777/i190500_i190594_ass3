@@ -4,6 +4,9 @@ public class MyMessage {
 
     String Message, SenderName, ReceiverName;
     String time1;
+    boolean flag;
+
+    //String ImgMessage;
 
 
     public MyMessage(String message,String time1,String SendName){
@@ -21,6 +24,17 @@ public class MyMessage {
 
         return time1;
     }
+
+    public void setFlag(boolean flag){
+        this.flag=flag;
+
+    }
+    public boolean getFlag(){
+        return flag;
+    }
+
+
+
 
     public void setMessage(String message) {
         Message = message;

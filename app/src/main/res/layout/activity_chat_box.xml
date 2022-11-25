@@ -30,6 +30,21 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="take screenshot"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/brown"
+            android:gravity="center"
+            />
+
+
+
+
+
 
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
@@ -59,6 +74,35 @@
             android:hint="type something..."
             android:paddingLeft="20dp"
             />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical|right"
+            >
+        <TextView
+            android:id="@+id/imgselect"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show"
+            android:textColor="@color/corn"
+            android:textSize="20dp"
+            />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/submit_imsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/add_white"
+            android:visibility="gone"
+            />
+
         <ImageView
             android:id="@+id/submit_msg"
             android:layout_width="wrap_content"
@@ -66,7 +110,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/submit_button"
-            ></ImageView>
+            android:visibility="visible"
+            />
     </RelativeLayout>
 
 </RelativeLayout>

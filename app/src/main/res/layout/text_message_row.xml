@@ -13,6 +13,12 @@
         android:textSize="30sp"
         android:background="@color/teal_200"
         android:id="@+id/messageText"/>
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        android:id="@+id/imagemessage1"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

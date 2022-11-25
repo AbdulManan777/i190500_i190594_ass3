@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,7 +41,17 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.message.setText(ls.get(position).getMessage());
+        if(ls.get(position).getFlag()){
+            holder.message.setText(ls.get(position).getMessage());
+
+        }
+        else{
+            holder.message.setVisibility(View.GONE);
+            holder.iv.setVisibility(View.VISIBLE);
+            Glide.with(c).load(ls.get(position).getMessage()).into(holder.iv);
+        }
+
+
 
 
 
@@ -69,12 +81,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView message,time1;
         LinearLayout row;
+        ImageView iv;
        // ImageView dpImg;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             row=itemView.findViewById(R.id.message_row);
             message=itemView.findViewById(R.id.messageText);
             time1=itemView.findViewById(R.id.time1);
+            iv=itemView.findViewById(R.id.imagemessage1);
 
             //phno=itemView.findViewById(R.id.phno);
             //address=itemView.findViewById(R.id.address);

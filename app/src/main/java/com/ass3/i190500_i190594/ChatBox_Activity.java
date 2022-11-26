@@ -59,7 +59,7 @@ import java.util.Map;
 public class ChatBox_Activity extends AppCompatActivity {
     TextView Username;
     EditText messageEdit;
-    ImageView sendMessage;
+    ImageView sendMessage, sendVoiceMessage;
     RecyclerView rv;
     MessagesAdapter adapter;
     List<MyMessage> ls;
@@ -83,7 +83,7 @@ public class ChatBox_Activity extends AppCompatActivity {
         sendMessage=findViewById(R.id.submit_msg);
         img=findViewById(R.id.imgselect);
         imgmessage=findViewById(R.id.submit_imsg);
-
+        sendVoiceMessage=findViewById(R.id.send_vc);
         rv=findViewById(R.id.messageRV);
 
         RecyclerView.LayoutManager lm=new LinearLayoutManager(ChatBox_Activity.this);
@@ -97,6 +97,14 @@ public class ChatBox_Activity extends AppCompatActivity {
         un=getIntent().getStringExtra("Username");
         senderName=getIntent().getStringExtra("SenderName");
 
+        // voice recording activity
+        sendVoiceMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChatBox_Activity.this, voice_recorder.class);
+                startActivity(intent);
+            }
+        });
 
 
 

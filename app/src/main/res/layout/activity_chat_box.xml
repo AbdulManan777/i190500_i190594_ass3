@@ -59,60 +59,71 @@
     </androidx.recyclerview.widget.RecyclerView>
     <RelativeLayout
         android:id="@+id/bottom_bar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_alignParentBottom="true"
         >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/msg_bar"
+            >
         <EditText
+            android:layout_alignParentLeft="true"
             android:id="@+id/msg"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:background="@drawable/rounded_commentfield"
             android:textColorHint="#ffffff"
-            android:layout_toLeftOf="@+id/submit_msg"
             android:hint="type something..."
             android:paddingLeft="20dp"
             />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical|right"
-            >
-        <TextView
-            android:id="@+id/imgselect"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IMG"
-            android:textColor="@color/corn"
-            android:textSize="20dp"
-            />
-        </LinearLayout>
+            <TextView
+                android:id="@+id/imgselect"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="270dp"
+                android:layout_marginTop="15dp"
+                android:text="IMG"
+                android:textColor="@color/corn"
+                android:textSize="20dp"
+                />
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/submit_imsg"
+            android:layout_toRightOf="@+id/msg_bar"
+            android:layout_toLeftOf="@+id/send_vc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/submit_button"
             android:visibility="gone"
             />
-
         <ImageView
             android:id="@+id/submit_msg"
+            android:layout_toRightOf="@+id/msg_bar"
+            android:layout_toLeftOf="@+id/send_vc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:src="@drawable/submit_button"
             android:visibility="visible"
             />
+
+        <ImageView
+            android:id="@+id/send_vc"
+            android:layout_marginRight="5dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/start_recording"
+            ></ImageView>
     </RelativeLayout>
 
 </RelativeLayout>
